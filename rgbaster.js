@@ -33,6 +33,12 @@
     return ['rgb(', name, ')'].join('');
   };
 
+  // show the RGB result as object
+  var makeRGBasObj = function (name) {
+    var splitVal = name.split(',')
+    return {r: splitVal[0], g: splitVal[1], b: splitVal[2]};
+  }
+
   var mapPalette = function(palette){
     return palette.map(function(c){ return makeRGB(c.name); });
   };
@@ -112,7 +118,8 @@
                 opts.success({
                   dominant: makeRGB(colors.dominant.name),
                   secondary: palette[0],
-                  palette:  palette
+                  palette:  palette,
+                  makeRGBobj: makeRGBasObj(colors.dominant.name)
                 });
               }
     });
